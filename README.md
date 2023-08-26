@@ -16,6 +16,8 @@ ___💡 Link will be here after completion 💡___
 - React
 - Typescript
 - Tailwindcss
+- Mongoose
+- Zod
 
 ## 📦 Installation
 
