@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import Thread from '../models/thread.model';
 import User from '../models/user.model';
-import { connectTodDB } from '../mongoose';
+import { connectToDB } from '../mongoose';
 
 interface Params {
   text: string;
@@ -19,7 +19,7 @@ export async function createThread({
   path,
 }: Params) {
   try {
-    connectTodDB();
+    connectToDB();
 
     const createdThread = await Thread.create({
       text,
@@ -39,7 +39,7 @@ export async function createThread({
 }
 
 export async function fetchPosts(pageNumber = 1, pageSize = 20) {
-  connectTodDB();
+  connectToDB();
 
   //* Calculate the number of posts to skip
   const skipAmount = (pageNumber - 1) * pageSize;
@@ -71,7 +71,7 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
 }
 
 export async function fetchThreadById(id: string) {
-  connectTodDB();
+  connectToDB();
 
   try {
     //TODO: Populate Community
@@ -115,7 +115,7 @@ export async function addCommentToThread(
   userId: string,
   path: string,
 ) {
-  connectTodDB();
+  connectToDB();
 
   try {
     const originalThread = await Thread.findById(threadId);
