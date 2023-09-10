@@ -1,8 +1,8 @@
-'user server';
+'use server';
 
 import { revalidatePath } from 'next/cache';
 import User from '../models/user.model';
-import { connectTodDB } from '../mongoose';
+import { connectToDB } from '../mongoose';
 import Thread from '../models/thread.model';
 import { FilterQuery, SortOrder } from 'mongoose';
 
@@ -22,7 +22,7 @@ export async function updateUser({
   image,
   path,
 }: Params): Promise<void> {
-  connectTodDB();
+  connectToDB();
 
   try {
     await User.findOneAndUpdate(
@@ -43,7 +43,7 @@ export async function updateUser({
 
 export async function fetchUser(userId: string) {
   try {
-    connectTodDB();
+    connectToDB();
 
     return await User.findOne({ id: userId });
     // .populate({
@@ -57,7 +57,7 @@ export async function fetchUser(userId: string) {
 
 export async function fetchUserPosts(userId: string) {
   try {
-    connectTodDB();
+    connectToDB();
 
     //TODO: Populate community
     const threads = await User.findOne({ id: userId }).populate({
@@ -94,7 +94,7 @@ export async function fetchUsers({
   sortBy?: SortOrder;
 }) {
   try {
-    connectTodDB();
+    connectToDB();
 
     const skipAmount = (pageNumber - 1) * pageSize;
 
@@ -132,7 +132,7 @@ export async function fetchUsers({
 
 export async function getActivity(userId: string) {
   try {
-    connectTodDB();
+    connectToDB();
 
     const userThreads = await Thread.find({ author: userId });
 

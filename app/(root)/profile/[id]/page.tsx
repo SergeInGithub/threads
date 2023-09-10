@@ -1,4 +1,3 @@
-import PostThread from '@/components/forms/PostThread';
 import ProfileHeader from '@/components/shared/ProfileHeader';
 import { fetchUser } from '@/lib/actions/user.actions';
 import { currentUser } from '@clerk/nextjs';
@@ -58,7 +57,7 @@ async function Page({ params }: { params: { id: string } }) {
               className="w-full text-light-1"
             >
               <ThreadsTab
-                currentUserId={userInfo.id}
+                currentUserId={user.id}
                 accountId={userInfo.id}
                 accountType="User"
               />
