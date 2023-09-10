@@ -1,4 +1,4 @@
-'user server';
+'use server';
 
 import { revalidatePath } from 'next/cache';
 import Thread from '../models/thread.model';
@@ -87,7 +87,7 @@ export async function fetchThreadById(id: string) {
         populate: [
           {
             path: 'author',
-            model: 'User',
+            model: User,
             select: '_id id name parentId image',
           },
           {
