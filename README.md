@@ -4,8 +4,6 @@
 
 A Next.js Instagram's Threads app clone but more powerful with more features the original app lacks.
 
-## ⚠️ This project is currently still in progress
-
 ## 🧬 Live Site
 
 ___💡 Link will be here after completion 💡___
